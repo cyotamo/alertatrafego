@@ -26,6 +26,11 @@ function renderDashboard(reports) {
 }
 
 async function loadDashboard() {
-  const reports = await apiGet("getReports");
+  const response = await apiGet("getReports");
+  const reports = Array.isArray(response?.dados)
+    ? response.dados
+    : Array.isArray(response)
+      ? response
+      : [];
   renderDashboard(reports);
 }
