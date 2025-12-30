@@ -127,6 +127,11 @@ select {
 
 .local-titulo {
   margin-left: 0;
+  font-weight: 600;
+}
+
+.avenida-titulo {
+  font-weight: 700;
 }
 
 .app-footer {
