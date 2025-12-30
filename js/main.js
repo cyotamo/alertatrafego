@@ -11,15 +11,36 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   btnRelatorios.addEventListener("click", async () => {
+    setLoadingBotao(btnRelatorios, true);
     dashboardSection.classList.remove("hidden");
     reportSection.classList.add("hidden");
-    await loadDashboard();
+
+    try {
+      await loadDashboard();
+    } finally {
+      setLoadingBotao(btnRelatorios, false);
+    }
   });
 
   btnEnviar.addEventListener("click", submitReport);
 
   init();
 });
+
+function setLoadingBotao(botao, loading) {
+  const text = botao.querySelector(".btn-text");
+  const spinner = botao.querySelector(".btn-spinner");
+
+  if (loading) {
+    text.classList.add("hidden");
+    spinner.classList.remove("hidden");
+    botao.disabled = true;
+  } else {
+    text.classList.remove("hidden");
+    spinner.classList.add("hidden");
+    botao.disabled = false;
+  }
+}
 
 async function init() {
   try {
