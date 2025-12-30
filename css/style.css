@@ -108,6 +108,22 @@ select {
   border-radius: 4px;
 }
 
+.dashboard-avenida p,
+.dashboard-avenida .avenida-titulo,
+.dashboard-avenida .local-titulo,
+.dashboard-avenida .dashboard-item {
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
+
+.dashboard-item {
+  margin-left: 16px;
+}
+
+.local-titulo {
+  margin-left: 0;
+}
+
 .app-footer {
   text-align: center;
   padding: 15px;
