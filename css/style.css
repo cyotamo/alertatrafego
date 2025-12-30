@@ -99,12 +99,6 @@ select {
   white-space: normal;
 }
 
-.dashboard-item::before {
-  content: "⚠ ";
-  display: inline-block;
-  margin-right: 4px;
-}
-
 .dashboard-item strong {
   display: block;
   margin-bottom: 6px;
