@@ -6,6 +6,32 @@ function formatarHora(isoString) {
   });
 }
 
+function agruparOcorrencias(reports) {
+  const mapa = {};
+
+  reports.forEach((r) => {
+    const chave = `${r.avenida}|${r.local}|${r.evento}`;
+
+    if (!mapa[chave]) {
+      mapa[chave] = {
+        avenida: r.avenida,
+        local: r.local,
+        evento: r.evento,
+        total: 0,
+        ultimoReporte: r.ultimoReporte
+      };
+    }
+
+    mapa[chave].total += r.total;
+
+    if (new Date(r.ultimoReporte) > new Date(mapa[chave].ultimoReporte)) {
+      mapa[chave].ultimoReporte = r.ultimoReporte;
+    }
+  });
+
+  return Object.values(mapa);
+}
+
 function renderDashboard(reports) {
   const container = document.getElementById("dashboardList");
   container.innerHTML = "";
@@ -34,5 +60,6 @@ function renderDashboard(reports) {
 async function loadDashboard() {
   const response = await apiGet("getOcorrencias");
   const reports = response.dados || response;
-  renderDashboard(reports);
+  const agrupados = agruparOcorrencias(reports);
+  renderDashboard(agrupados);
 }
