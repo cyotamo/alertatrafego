@@ -83,7 +83,7 @@ select {
 
 .dashboard-item {
   background: #fff;
-  padding: 15px;
+  padding: 0;
 }
 
 .dashboard-item strong {
@@ -118,6 +118,11 @@ select {
 
 .dashboard-item {
   margin-left: 16px;
+}
+
+.dashboard-avenida .dashboard-item {
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 .local-titulo {
