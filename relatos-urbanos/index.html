@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8">
+  <title>Relatos Urbanos</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="app-header">
+  <h1>Relatos Urbanos</h1>
+  <p>Plataforma colaborativa de reporte de ocorrências nas vias públicas</p>
+</header>
+
+<main class="container">
+
+  <div class="actions">
+    <button id="btnReportar" class="btn primary">Reportar Ocorrência</button>
+    <button id="btnRelatorios" class="btn secondary">Relatórios Activos</button>
+  </div>
+
+  <!-- REPORTAR -->
+  <section id="reportSection" class="card hidden">
+    <h2>Nova Ocorrência</h2>
+
+    <label for="avenidaSelect">Avenida</label>
+    <select id="avenidaSelect"></select>
+
+    <label for="localSelect">Local</label>
+    <select id="localSelect" disabled></select>
+
+    <label for="eventoSelect">Tipo de Evento</label>
+    <select id="eventoSelect"></select>
+
+    <button id="btnEnviar" class="btn success">Enviar Reporte</button>
+    <p id="reportStatus" class="status"></p>
+  </section>
+
+  <!-- DASHBOARD -->
+  <section id="dashboardSection" class="hidden">
+    <h2>Ocorrências Activas (últimas 2 horas)</h2>
+    <div id="dashboardList" class="dashboard"></div>
+  </section>
+
+</main>
+
+<footer class="app-footer">
+  <p>© 2025 · Plataforma colaborativa</p>
+</footer>
+
+<script src="js/api.js"></script>
+<script src="js/report.js"></script>
+<script src="js/dashboard.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

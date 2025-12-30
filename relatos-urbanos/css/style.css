@@ -1,0 +1,119 @@
+:root {
+  --primary: #1e88e5;
+  --secondary: #455a64;
+  --success: #2e7d32;
+  --bg: #f5f7fa;
+  --card: #ffffff;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: var(--bg);
+  color: #333;
+}
+
+.app-header {
+  background: var(--primary);
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+}
+
+.container {
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 0 15px;
+}
+
+.actions {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 12px 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.primary {
+  background: var(--primary);
+  color: #fff;
+}
+
+.secondary {
+  background: var(--secondary);
+  color: #fff;
+}
+
+.success {
+  background: var(--success);
+  color: #fff;
+}
+
+.card {
+  background: var(--card);
+  padding: 20px;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, .1);
+}
+
+label {
+  display: block;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+}
+
+.dashboard {
+  display: grid;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.dashboard-item {
+  background: #fff;
+  border-left: 5px solid var(--primary);
+  padding: 15px;
+}
+
+.dashboard-item strong {
+  display: block;
+  margin-bottom: 6px;
+}
+
+.hidden {
+  display: none;
+}
+
+.status {
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.app-footer {
+  text-align: center;
+  padding: 15px;
+  font-size: 14px;
+  color: #777;
+}
+
+@media (max-width: 600px) {
+  .actions {
+    flex-direction: column;
+  }
+
+  .btn {
+    width: 100%;
+  }
+}
