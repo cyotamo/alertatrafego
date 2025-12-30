@@ -95,10 +95,14 @@ select {
 .dashboard-item {
   animation: piscarAlerta 1.2s ease-in-out infinite;
   font-weight: 500;
+  display: block;
+  white-space: normal;
 }
 
 .dashboard-item::before {
   content: "⚠ ";
+  display: inline-block;
+  margin-right: 4px;
 }
 
 .dashboard-item strong {
