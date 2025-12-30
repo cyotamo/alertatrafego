@@ -60,7 +60,7 @@ function renderDashboard(reports) {
         item.className = "dashboard-item";
 
         const details = document.createElement("div");
-        details.textContent = `${evento.evento} · ${evento.total} reportes · Último: ${formatarHora(evento.ultimoReporte)}`;
+        details.textContent = `⚠ ${evento.evento} · ${evento.total} reportes · Último: ${formatarHora(evento.ultimoReporte)}`;
 
         item.appendChild(details);
         localSection.appendChild(item);
