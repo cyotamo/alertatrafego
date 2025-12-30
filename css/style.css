@@ -92,6 +92,15 @@ select {
   padding: 0;
 }
 
+.dashboard-item {
+  animation: piscarAlerta 1.2s ease-in-out infinite;
+  font-weight: 500;
+}
+
+.dashboard-item::before {
+  content: "⚠ ";
+}
+
 .dashboard-item strong {
   display: block;
   margin-bottom: 6px;
@@ -121,6 +130,21 @@ select {
 @keyframes spin {
   to {
     transform: rotate(360deg);
+  }
+}
+
+@keyframes piscarAlerta {
+  0% {
+    opacity: 1;
+    color: #c62828;
+  }
+  50% {
+    opacity: 0.4;
+    color: #e53935;
+  }
+  100% {
+    opacity: 1;
+    color: #c62828;
   }
 }
 
