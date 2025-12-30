@@ -28,13 +28,19 @@
     <h2>Nova Ocorrência</h2>
 
     <label for="avenidaSelect">Avenida</label>
-    <select id="avenidaSelect"></select>
+    <select id="avenidaSelect">
+      <option value="">Seleccione</option>
+    </select>
 
     <label for="localSelect">Local</label>
-    <select id="localSelect" disabled></select>
+    <select id="localSelect" disabled>
+      <option value="">Seleccione</option>
+    </select>
 
     <label for="eventoSelect">Tipo de Evento</label>
-    <select id="eventoSelect"></select>
+    <select id="eventoSelect" disabled>
+      <option value="">Seleccione</option>
+    </select>
 
     <button id="btnEnviar" class="btn success">Enviar Reporte</button>
     <p id="reportStatus" class="status"></p>
