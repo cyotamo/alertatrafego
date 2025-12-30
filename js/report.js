@@ -6,14 +6,27 @@ function initReport(meta) {
   const localSelect = document.getElementById("localSelect");
   const eventoSelect = document.getElementById("eventoSelect");
 
+  localSelect.disabled = true;
+  eventoSelect.disabled = true;
+
   fillSelect(avenidaSelect, Object.keys(meta.avenidas || {}));
+  fillSelect(localSelect, []);
   fillSelect(eventoSelect, meta.eventos || []);
 
   avenidaSelect.addEventListener("change", () => {
     const avenida = avenidaSelect.value;
     const locais = (reportMeta.avenidas && reportMeta.avenidas[avenida]) || [];
     fillSelect(localSelect, locais);
-    localSelect.disabled = locais.length === 0;
+    localSelect.disabled = !avenidaSelect.value;
+    eventoSelect.disabled = true;
+    eventoSelect.value = "";
+  });
+
+  localSelect.addEventListener("change", () => {
+    eventoSelect.disabled = !localSelect.value;
+    if (!localSelect.value) {
+      eventoSelect.value = "";
+    }
   });
 
   if (avenidaSelect.value) {
@@ -56,6 +69,16 @@ async function submitReport() {
     statusEl.textContent = response && response.message
       ? response.message
       : "Reporte enviado com sucesso.";
+
+    const avenidaSelect = document.getElementById("avenidaSelect");
+    const localSelect = document.getElementById("localSelect");
+    const eventoSelect = document.getElementById("eventoSelect");
+
+    avenidaSelect.value = "";
+    localSelect.value = "";
+    eventoSelect.value = "";
+    localSelect.disabled = true;
+    eventoSelect.disabled = true;
   } catch (error) {
     statusEl.textContent = "Não foi possível enviar o reporte.";
   }
