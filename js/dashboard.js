@@ -1,11 +1,9 @@
 function renderDashboard(reports) {
-  const list = document.getElementById("dashboardList");
-  list.innerHTML = "";
+  const container = document.getElementById("dashboardList");
+  container.innerHTML = "";
 
-  if (!reports || reports.length === 0) {
-    const empty = document.createElement("p");
-    empty.textContent = "Sem ocorrências activas no momento.";
-    list.appendChild(empty);
+  if (!Array.isArray(reports) || reports.length === 0) {
+    container.innerHTML = "<p>Sem ocorrências activas no momento.</p>";
     return;
   }
 
@@ -21,16 +19,12 @@ function renderDashboard(reports) {
 
     item.appendChild(title);
     item.appendChild(details);
-    list.appendChild(item);
+    container.appendChild(item);
   });
 }
 
 async function loadDashboard() {
-  const response = await apiGet("getReports");
-  const reports = Array.isArray(response?.dados)
-    ? response.dados
-    : Array.isArray(response)
-      ? response
-      : [];
+  const response = await apiGet("getOcorrencias");
+  const reports = response.dados || response;
   renderDashboard(reports);
 }
