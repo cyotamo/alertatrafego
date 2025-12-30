@@ -6,60 +6,74 @@ function formatarHora(isoString) {
   });
 }
 
-function agruparOcorrencias(reports) {
-  const mapa = {};
+function agruparHierarquico(reports) {
+  const tree = {};
 
   reports.forEach((r) => {
-    const chave = `${r.avenida}|${r.local}|${r.evento}`;
-
-    if (!mapa[chave]) {
-      mapa[chave] = {
-        avenida: r.avenida,
-        local: r.local,
-        evento: r.evento,
-        total: 0,
-        ultimoReporte: r.ultimoReporte
-      };
+    if (!tree[r.avenida]) {
+      tree[r.avenida] = {};
     }
 
-    mapa[chave].total += r.total;
-
-    if (new Date(r.ultimoReporte) > new Date(mapa[chave].ultimoReporte)) {
-      mapa[chave].ultimoReporte = r.ultimoReporte;
+    if (!tree[r.avenida][r.local]) {
+      tree[r.avenida][r.local] = [];
     }
+
+    tree[r.avenida][r.local].push({
+      evento: r.evento,
+      total: r.total,
+      ultimoReporte: r.ultimoReporte
+    });
   });
 
-  return Object.values(mapa);
+  return tree;
 }
 
 function renderDashboard(reports) {
   const container = document.getElementById("dashboardList");
   container.innerHTML = "";
 
-  if (!Array.isArray(reports) || reports.length === 0) {
+  if (!reports || Object.keys(reports).length === 0) {
     container.innerHTML = "<p>Sem ocorrências activas no momento.</p>";
     return;
   }
 
-  reports.forEach((report) => {
-    const item = document.createElement("div");
-    item.className = "dashboard-item";
+  Object.entries(reports).forEach(([avenida, locais]) => {
+    const avenidaSection = document.createElement("div");
+    avenidaSection.className = "dashboard-avenida";
 
-    const title = document.createElement("strong");
-    title.textContent = `${report.avenida} · ${report.local}`;
+    const avenidaTitle = document.createElement("strong");
+    avenidaTitle.textContent = avenida;
+    avenidaSection.appendChild(avenidaTitle);
 
-    const details = document.createElement("div");
-    details.textContent = `${report.evento} · ${report.total} reportes · Último: ${formatarHora(report.ultimoReporte)}`;
+    Object.entries(locais).forEach(([local, eventos]) => {
+      const localSection = document.createElement("div");
+      localSection.className = "dashboard-local";
 
-    item.appendChild(title);
-    item.appendChild(details);
-    container.appendChild(item);
+      const localTitle = document.createElement("div");
+      localTitle.textContent = local;
+      localSection.appendChild(localTitle);
+
+      eventos.forEach((evento) => {
+        const item = document.createElement("div");
+        item.className = "dashboard-item";
+
+        const details = document.createElement("div");
+        details.textContent = `${evento.evento} · ${evento.total} reportes · Último: ${formatarHora(evento.ultimoReporte)}`;
+
+        item.appendChild(details);
+        localSection.appendChild(item);
+      });
+
+      avenidaSection.appendChild(localSection);
+    });
+
+    container.appendChild(avenidaSection);
   });
 }
 
 async function loadDashboard() {
   const response = await apiGet("getOcorrencias");
   const reports = response.dados || response;
-  const agrupados = agruparOcorrencias(reports);
-  renderDashboard(agrupados);
+  const dadosAgrupados = agruparHierarquico(reports);
+  renderDashboard(dadosAgrupados);
 }
