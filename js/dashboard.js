@@ -50,8 +50,10 @@ function renderDashboard(reports) {
       localSection.className = "dashboard-local";
 
       const localTitle = document.createElement("div");
+      localTitle.className = "local-titulo";   // 👈 ESTA LINHA
       localTitle.textContent = local;
       localSection.appendChild(localTitle);
+
 
       eventos.forEach((evento) => {
         const item = document.createElement("div");
