@@ -70,6 +70,10 @@ body {
   color: #fff;
 }
 
+#btnEnviar {
+  margin-top: 12px;
+}
+
 .card {
   background: var(--card);
   padding: 20px;
