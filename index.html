@@ -6,8 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="icon.png" type="image/png">
   <link rel="apple-touch-icon" href="icon.png">
-  <meta property="og:title" content="Relatos Urbanos">
-  <meta property="og:description" content="Plataforma colaborativa de reporte de ocorrências nas vias públicas">
+  <meta property="og:title" content="Alerta Tráfego">
+  <meta property="og:description" content="Plataforma colaborativa tráfego na via pública">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://cyotamo.github.io/alertatrafego/">
   <meta property="og:image" content="https://cyotamo.github.io/alertatrafego/icon.png">
@@ -16,25 +16,25 @@
 <body>
 
 <header class="app-header">
-  <h1>Relatos Urbanos</h1>
-  <p>Plataforma colaborativa de reporte de ocorrências nas vias públicas</p>
+  <h1>Alerta Tráfego</h1>
+  <p>Plataforma colaborativa tráfego na via pública</p>
 </header>
 
 <main class="container">
 
   <div class="actions">
-    <button id="btnReportar" class="btn primary">Reportar Ocorrência</button>
+    <button id="btnReportar" class="btn primary">Reportar Tráfego</button>
     <button id="btnRelatorios" class="btn secondary">
-      <span class="btn-text">Relatórios Activos</span>
+      <span class="btn-text">Tráfegos Activos</span>
       <span class="btn-spinner hidden"></span>
     </button>
   </div>
 
   <!-- REPORTAR -->
   <section id="reportSection" class="card hidden">
-    <h2>Nova Ocorrência</h2>
+    <h2>Seleccione:</h2>
 
-    <label for="avenidaSelect">Avenida</label>
+    <label for="avenidaSelect">Avenida/Rua</label>
     <select id="avenidaSelect">
       <option value="">Seleccione</option>
     </select>
@@ -44,22 +44,17 @@
       <option value="">Seleccione</option>
     </select>
 
-    <label for="eventoSelect">Tipo de Evento</label>
+    <label for="eventoSelect">Tipo</label>
     <select id="eventoSelect" disabled>
       <option value="">Seleccione</option>
     </select>
 
-    <button id="btnEnviar" class="btn success">Enviar Reporte</button>
-    <p id="reportStatus" class="status"></p>
-  </section>
-
-  <!-- DASHBOARD -->
-  <section id="dashboardSection" class="hidden">
-    <h2>Ocorrências Activas (últimas 2 horas)</h2>
-    <div id="dashboardList" class="dashboard"></div>
-  </section>
+<button id="btnEnviar" class="btn success">Enviar</button>
+<p id="reportStatus" class="status"></p>
+</section>
 
 </main>
+
 
 <footer class="app-footer">
   <p>© 2025 · Plataforma colaborativa</p>
