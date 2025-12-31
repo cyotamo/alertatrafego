@@ -33,7 +33,7 @@ function renderDashboard(reports) {
   container.innerHTML = "";
 
   if (!reports || Object.keys(reports).length === 0) {
-    container.innerHTML = "<p>Sem ocorrências activas no momento.</p>";
+    container.innerHTML = "<p>Sem tráfegos activos no momento.</p>";
     return;
   }
 
