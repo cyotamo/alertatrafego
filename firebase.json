@@ -1,6 +1,11 @@
 {
   "hosting": {
     "public": ".",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
     "headers": [
       {
         "source": "/manifest.json",
@@ -13,7 +18,6 @@
       }
     ],
     "rewrites": [
-      { "source": "/manifest.json", "destination": "/manifest.json" },
       { "source": "**", "destination": "/index.html" }
     ]
   }
