@@ -6,11 +6,18 @@
   --card: #ffffff;
 }
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: Arial, sans-serif;
   background: var(--bg);
   color: #333;
+  overflow-x: hidden;
 }
 
 .app-header {
@@ -23,7 +30,8 @@ body {
 .container {
   max-width: 900px;
   margin: 20px auto;
-  padding: 0 15px;
+  padding: 0 12px;
+  width: 100%;
 }
 
 .actions {
@@ -193,6 +201,19 @@ select {
 }
 
 @media (max-width: 600px) {
+  .card {
+    padding: 14px;
+  }
+
+  .dashboard-avenida {
+    padding: 12px;
+  }
+
+  button,
+  select {
+    width: 100%;
+  }
+
   .actions {
     flex-direction: column;
   }
@@ -262,3 +283,4 @@ select {
     padding: 12px;
   }
 }
+:root {
